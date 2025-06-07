@@ -1,20 +1,20 @@
-# Используем официальный образ Python
-FROM python:3.9-slim
+# Используем официальный образ Debian
+FROM debian:bullseye
+
+# Устанавливаем необходимые пакеты
+RUN apt-get update && apt-get install -y gcc libmicrohttpd-dev && apt-get clean
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем файл с зависимостями (если есть)
-COPY requirements.txt .
-
-# Устанавливаем зависимости
-RUN pip install --no-cache-dir -r requirements.txt
-
 # Копируем код сервера
-COPY server.py .
+COPY server.c .
 
 # Указываем команду для запуска сервера
-CMD ["python", "server.py"]
+RUN gcc server.c -o server -lmicrohttpd
 
 # Открываем порт
-EXPOSE 5000
+EXPOSE 8080
+
+# Запуск сервера
+CMD ["./server"]
