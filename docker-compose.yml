@@ -1,7 +1,8 @@
 version: '3.8'
 services:
   web:
-    image: ping-server
-    container_name: ping-server-container
+    build: .
+    image: bloom-server
+    container_name: bloom-server-container
     ports:
      - "8080:8080"
