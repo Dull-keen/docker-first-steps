@@ -22,19 +22,14 @@
 
 ### Сборка и запуск
 
-1. **Собрать образ:**
-
-   ```bash
-   docker build -t ping-server .
-   ```
-
-2. **Запустить сервер через Docker Compose:**
+1. **Запустить сервер через Docker Compose:**
 
    ```bash
    docker-compose up
    ```
 
-3. Сервер будет доступен по адресу:
+2. **Сервер будет доступен по адресу:**
+
    [http://localhost:8080](http://localhost:8080)
 
 ---
