@@ -8,10 +8,10 @@ RUN apt-get update && apt-get install -y gcc libmicrohttpd-dev && apt-get clean
 WORKDIR /app
 
 # Копируем код сервера
-COPY server.c .
+COPY server.c bloom.c bloom.h .
 
 # Указываем команду для запуска сервера
-RUN gcc server.c -o server -lmicrohttpd
+RUN gcc server.c bloom.c -o server -lmicrohttpd
 
 # Открываем порт
 EXPOSE 8080
